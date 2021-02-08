@@ -23,6 +23,10 @@ describe BankAccount do
       @bank_account.withdraw(20)
       expect(@bank_account.current_balance).to eq(30)
     end
+
+    it 'raises error if withdraw amount is > balance' do
+      expect{ @bank_account.withdraw(20) }.to raise_error 'Insufficient Funds'
+    end
   end
     
 end
