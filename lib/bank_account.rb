@@ -1,22 +1,26 @@
 class BankAccount
-  attr_reader :current_balance
+  attr_reader :current_balance, :transactions
 
   def initialize
     @current_balance = 0
+    @transactions = []
   end
 
   def deposit(amount)
     update_balance(amount)
-    puts header
-    puts "#{current_time} || #{amount} || || #{current_balance}"
+    @transactions << "#{current_time} || #{amount} || || #{current_balance}"
   end
 
   def withdraw(amount)
-    update_balance(-amount)
-    print header
-    print "#{current_time} || || #{amount}  || #{current_balance}"
+    raise 'Insufficient Funds' if (@current_balance - amount <= 0)
 
-    raise 'Insufficient Funds' if (@current_balance - amount < 0)
+    update_balance(-amount)
+    @transactions << "#{current_time} || || #{amount}  || #{current_balance}"
+  end
+
+  def statement
+    puts header
+    puts transactions.reverse
   end
 
   private
