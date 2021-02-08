@@ -6,13 +6,19 @@ class BankAccount
   end
 
   def deposit(amount)
-    @current_balance += amount
+    update_balance(amount)
   end
 
   def withdraw(amount)
-    @current_balance -= amount
+    update_balance(-amount)
 
     raise 'Insufficient Funds' if (@current_balance - amount < 0)
+  end
+
+  private
+
+  def update_balance(amount)
+    @current_balance += amount
   end
 
 end
