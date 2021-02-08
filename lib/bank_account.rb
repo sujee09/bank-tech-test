@@ -7,10 +7,14 @@ class BankAccount
 
   def deposit(amount)
     update_balance(amount)
+    puts header
+    puts "#{current_time} || #{amount} || || #{current_balance}"
   end
 
   def withdraw(amount)
     update_balance(-amount)
+    print header
+    print "#{current_time} || || #{amount}  || #{current_balance}"
 
     raise 'Insufficient Funds' if (@current_balance - amount < 0)
   end
@@ -19,6 +23,14 @@ class BankAccount
 
   def update_balance(amount)
     @current_balance += amount
+  end
+
+  def current_time
+    Time.now.strftime("%d/%m/%Y")
+  end
+  
+  def header
+    'Date || Credit || Debit || Balance'
   end
 
 end
