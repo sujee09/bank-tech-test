@@ -12,15 +12,15 @@ class BankAccount
   end
 
   def withdraw(amount)
-    raise 'Insufficient Funds' if (@current_balance - amount <= 0)
+    raise 'Insufficient Funds' if @current_balance - amount <= 0
 
     update_balance(-amount)
-    @transactions << "#{current_time} || || #{amount}  || #{current_balance}"
+    @transactions << "#{current_time} || || #{amount} || #{current_balance}"
   end
 
   def statement
-    puts header
-    puts transactions.reverse
+    @transactions << header
+    p transactions.reverse
   end
 
   private
@@ -30,11 +30,10 @@ class BankAccount
   end
 
   def current_time
-    Time.now.strftime("%d/%m/%Y")
+    Time.now.strftime('%d/%m/%Y')
   end
-  
+
   def header
     'Date || Credit || Debit || Balance'
   end
-
 end
