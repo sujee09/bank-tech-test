@@ -30,5 +30,10 @@ In terminal type in the following commands:
 ```
 git clone (current repo)
 cd bank-tech-test
+run 'bundle install'
 irb -r './lib/bank_account.rb'
+crate a new account with 'bank = BankAccount.new'
+to depoit money use 'bank.deposit(100)
+to withdraw money use 'bank.withdraw(50)
+to view statement use 'bank.statement'
 ```

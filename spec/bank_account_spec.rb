@@ -33,9 +33,9 @@ describe BankAccount do
     it 'shows a statment of the customers transactions' do
       @bank_account.deposit(50)
       @bank_account.withdraw(20)
-      expect(@bank_account.statement).to eq ["Date || Credit || Debit || Balance",
-                                        "09/02/2021 || || 20 || 30",
-                                        "09/02/2021 || 50 || || 50"]
-                                        end
+      expect(@bank_account.statement).to eq ['Date || Credit || Debit || Balance',
+                                             '09/02/2021 || || 20 || 30',
+                                             '09/02/2021 || 50 || || 50']
+    end
   end
 end
