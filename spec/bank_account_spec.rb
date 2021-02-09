@@ -30,12 +30,11 @@ describe BankAccount do
   end
 
   describe '#statement' do
+    bank_statement = "Date || Credit || Debit || Balance\n09/02/2021 || || 20.00 || 30.00\n09/02/2021 || 50.00 || || 50.00\n"
     it 'shows a statment of the customers transactions' do
       @bank_account.deposit(50)
       @bank_account.withdraw(20)
-      expect(@bank_account.statement).to eq ['Date || Credit || Debit || Balance',
-                                             '09/02/2021 || || 20 || 30',
-                                             '09/02/2021 || 50 || || 50']
+      expect { @bank_account.statement }.to output(bank_statement).to_stdout
     end
   end
 end
